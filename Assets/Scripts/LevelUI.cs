@@ -23,7 +23,7 @@ public class LevelUI : MonoBehaviour
         if (levelLoader != null) // Ensure levelLoader is not null
         {
             int currentLevel = levelLoader.GetCurrentLevelIndex() + 1;
-            levelText.text = "Level: " + currentLevel;
+            levelText.text = " " + currentLevel;
         }
         else
         {
