@@ -19,11 +19,13 @@ public class LevelLoader : MonoBehaviour
 
     void Start()
     {
+        // Find the Cinemachine Virtual Camera in the scene
         virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         if (virtualCamera == null)
         {
             Debug.LogError("No Cinemachine Virtual Camera found in the scene!");
         }
+
         levelUI = GetComponent<LevelUI>();
         levelTimer = GetComponent<LevelTimer>();
         completionPopup = GetComponent<CompletionPopup>();
@@ -67,20 +69,20 @@ public class LevelLoader : MonoBehaviour
             for (int x = 0; x < lines[y].Length; x++)
             {
                 char tile = lines[y][x];
-                Vector3 position = new Vector3(x, -y, 0);
+                Vector3 position = new Vector3(x, -y, 0); // Keep Z at 0 for 2D
 
                 switch (tile)
                 {
-                                      case 'x':
+                    case 'x':
                         Instantiate(wallPrefab, position, Quaternion.identity, transform);
                         break;
                     case 'p':
                         playerInstance = Instantiate(playerPrefab, position, Quaternion.identity, transform);
-                        // Set the Cinemachine Virtual Camera to follow the player
+                        // Set the Cinemachine Virtual Camera to follow the player (2D)
                         if (virtualCamera != null)
                         {
                             virtualCamera.Follow = playerInstance.transform;
-                            virtualCamera.LookAt = playerInstance.transform;
+                            virtualCamera.LookAt = null; // In 2D, we don't need LookAt
                         }
                         break;
                     case 'b':
@@ -92,11 +94,11 @@ public class LevelLoader : MonoBehaviour
                     case 'l':  // Player on goal
                         Instantiate(goalPrefab, position, Quaternion.identity, transform);
                         playerInstance = Instantiate(playerPrefab, position, Quaternion.identity, transform);
-                        // Set the Cinemachine Virtual Camera to follow the player
+                        // Set the Cinemachine Virtual Camera to follow the player (2D)
                         if (virtualCamera != null)
                         {
                             virtualCamera.Follow = playerInstance.transform;
-                            virtualCamera.LookAt = playerInstance.transform;
+                            virtualCamera.LookAt = null; // In 2D, we don't need LookAt
                         }
                         break;
                     case 'k':  // Box on goal

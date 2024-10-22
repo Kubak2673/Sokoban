@@ -15,7 +15,7 @@ public class CompletionPopup : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(time / 60F);
         int seconds = Mathf.FloorToInt(time % 60F);
-        completionText.text = $"Time: {minutes:00}:{seconds:00}";
+        completionText.text = $"{minutes:00}:{seconds:00}";
         popupPanel.SetActive(true); // Show the popup
     }
 

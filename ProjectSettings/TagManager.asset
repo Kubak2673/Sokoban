@@ -45,12 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 2822073977
+  - name: Goal
+    uniqueID: 1516101915
     locked: 0
   - name: Box
     uniqueID: 3049361531
     locked: 0
-  - name: Goal
-    uniqueID: 1516101915
+  - name: Player
+    uniqueID: 2822073977
     locked: 0
