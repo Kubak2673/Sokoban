@@ -1,0 +1,29 @@
+xxxxxxxx
+x      x
+x l    x
+x  b   x
+x      x
+xxxxxxxx
+---
+xxxxxxxx
+x p    x
+x    k x
+x b  g x
+x      x
+xxxxxxxx
+---
+xxxxxxxx
+x      x
+x p  b x
+x  b g x
+x    g x
+xxxxxxxx
+---
+xxxxxxxx
+x p    x
+x      x
+x b  g x
+x      x
+xxxxxxxx
+
+
