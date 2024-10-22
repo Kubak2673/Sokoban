@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem; // This is necessary to access the Gamepad class.
 
 public class LevelUI : MonoBehaviour
 {
@@ -9,19 +10,11 @@ public class LevelUI : MonoBehaviour
     void Start()
     {
         levelLoader = FindObjectOfType<LevelLoader>();
-        
         if (levelLoader == null)
         {
             Debug.LogError("LevelLoader not found in the scene!");
             return; // Exit Start if LevelLoader is not found
         }
-
-        if (levelText == null) // Ensure levelText is assigned
-        {
-            Debug.LogError("LevelText is not assigned in the inspector!");
-            return; // Exit Start if levelText is null
-        }
-
         UpdateLevelText();
     }
 

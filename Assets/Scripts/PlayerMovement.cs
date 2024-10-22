@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Collections.Generic;  // Include for List and Dictionary
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private LevelLoader levelLoader;  // Reference to LevelLoader
     public LayerMask obstacleLayer;
+
+    // To store the last action's state for undo functionality
+    private Stack<UndoState> undoStack = new Stack<UndoState>();
 
     void Start()
     {
@@ -27,6 +30,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Check for undo input
+        if (Input.GetKeyDown(KeyCode.U) || (Gamepad.current != null && Gamepad.current.buttonWest.wasPressedThisFrame))
+        {
+            UndoMove();
+            return;  // Prevent further execution in Update
+        }
+
         // If the level is completed, do not allow movement
         if (levelLoader != null && levelLoader.IsLevelCompleted())
         {
@@ -62,8 +72,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Coroutine to handle movement in steps
-    IEnumerator MovePlayer(Vector2 direction)
+    private System.Collections.IEnumerator MovePlayer(Vector2 direction)
     {
+        // Save the current state for undo functionality
+        SaveCurrentState();
+
         isMoving = true;  // Prevent further movement during this process
         targetPosition = rb.position + direction * moveDistance;  // Set target position
 
@@ -89,10 +102,53 @@ public class PlayerMovement : MonoBehaviour
         isMoving = false;  // Allow movement again
     }
 
+    // Method to save the current state for undo functionality
+    private void SaveCurrentState()
+    {
+        UndoState currentState = new UndoState
+        {
+            PlayerPosition = rb.position,
+            BoxPositions = new Dictionary<BoxMovement, Vector2>()
+        };
+
+        // Get all boxes and save their positions
+        BoxMovement[] boxes = FindObjectsOfType<BoxMovement>();
+        foreach (BoxMovement box in boxes)
+        {
+            currentState.BoxPositions[box] = box.transform.position;
+        }
+
+        // Push the current state onto the stack
+        undoStack.Push(currentState);
+    }
+
+    // Undo the last move
+    private void UndoMove()
+    {
+        if (undoStack.Count > 0)
+        {
+            UndoState lastUndoState = undoStack.Pop();  // Get the last state from the stack
+            rb.MovePosition(lastUndoState.PlayerPosition);  // Restore player position
+
+            // Restore box positions
+            foreach (var entry in lastUndoState.BoxPositions)
+            {
+                entry.Key.transform.position = entry.Value;  // Restore box position
+            }
+        }
+    }
+
     // Method to check if the target path is clear
-    bool IsPathClear(Vector2 targetPosition)
+    private bool IsPathClear(Vector2 targetPosition)
     {
         Collider2D hitCollider = Physics2D.OverlapCircle(targetPosition, 0.1f, obstacleLayer);
         return hitCollider == null || (!hitCollider.CompareTag("Wall") && !hitCollider.CompareTag("Box"));
+    }
+
+    // Struct to hold the state for undo functionality
+    private struct UndoState
+    {
+        public Vector2 PlayerPosition;
+        public Dictionary<BoxMovement, Vector2> BoxPositions;  // Store positions of boxes
     }
 }
