@@ -46,9 +46,11 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartLevel()
     {
+
         if (levelLoader != null)
         {
-            levelLoader.RestartCurrentLevel(); // Restart the current level
+                    Debug.Log($"!!!levelLoader: {levelLoader}");
+            StartCoroutine(levelLoader.RestartCurrentLevel()); // Start the coroutine
         }
     }
 

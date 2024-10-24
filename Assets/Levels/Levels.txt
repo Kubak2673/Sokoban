@@ -1,13 +1,13 @@
-xxxxxxxx
+rxxxxxxr
 x      x
 x l    x
 x  b   x
 x      x
-xxxxxxxx
+rxxxxxxr
 ---
 xxxxxxxx
 x p    x
-x    k x
+x b  g x
 x b  g x
 x      x
 xxxxxxxx

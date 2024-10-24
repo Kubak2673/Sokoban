@@ -15,19 +15,22 @@ public class LevelUI : MonoBehaviour
             Debug.LogError("LevelLoader not found in the scene!");
             return; // Exit Start if LevelLoader is not found
         }
-        UpdateLevelText();
+        int currentLevel = levelLoader.GetCurrentLevelIndex();
+        Debug.LogError($"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!LevelLoader reference is null: {currentLevel}");
+        
+        UpdateLevelText(currentLevel);
     }
-
-    public void UpdateLevelText()
+    public void UpdateLevelText(int currentLevel)
     {
-        if (levelLoader != null) // Ensure levelLoader is not null
-        {
-            int currentLevel = levelLoader.GetCurrentLevelIndex() + 1;
-            levelText.text = " " + currentLevel;
-        }
-        else
-        {
-            Debug.LogError("LevelLoader reference is null.");
-        }
+        // if (levelLoader != null) // Ensure levelLoader is not null
+        // {
+        //     int currentLevel = levelLoader.GetCurrentLevelIndex() + 1;
+        //     levelText.text = " " + currentLevel;
+        // }
+        // else
+        // {
+        //     Debug.LogError("LevelLoader reference is null.");
+        // }
+        levelText.text = " " + currentLevel;
     }
 }

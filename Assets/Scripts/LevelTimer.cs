@@ -1,46 +1,24 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LevelTimer : MonoBehaviour
 {
-    public Text timerText;  // Reference to the UI Text component
-    private float levelTime;
-    private bool isTimerRunning = false;
+    private int stepCount;
 
-    void Update()
+    // Method to increment the step count
+    public void IncrementStepCount()
     {
-        if (isTimerRunning)
-        {
-            levelTime += Time.deltaTime;
-            UpdateTimerText();
-        }
+        stepCount++;
     }
 
-    void UpdateTimerText()
+    // Method to reset the step count
+    public void ResetStepCount()
     {
-        int minutes = Mathf.FloorToInt(levelTime / 60F);
-        int seconds = Mathf.FloorToInt(levelTime % 60F);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        stepCount = 0;
     }
 
-    public void StopTimer()
+    // Method to get the current step count
+    public int GetStepCount()
     {
-        isTimerRunning = false;  // Stop the timer
-    }
-
-    public void StartTimer()
-    {
-        isTimerRunning = true;  // Start the timer
-    }
-
-    public void ResetTimer()
-    {
-        levelTime = 0f;  // Reset the timer value
-        UpdateTimerText();  // Update the UI
-    }
-
-    public float GetLevelTime()
-    {
-        return levelTime;  // Return the current level time
+        return stepCount;
     }
 }

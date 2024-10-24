@@ -4,15 +4,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveDistance = 1.0f;
-    private Vector2 targetPosition;
-    private bool isMoving = false;
-    private Rigidbody2D rb;
-    private LevelLoader levelLoader;  // Reference to LevelLoader
-    public LayerMask obstacleLayer;
+    public float moveDistance = 1.0f;   // Distance the player moves
+    private Vector2 targetPosition;      // The target position for the player
+    private bool isMoving = false;       // Check if the player is currently moving
+    private Rigidbody2D rb;              // Reference to the player's Rigidbody2D
+    private LevelLoader levelLoader;     // Reference to LevelLoader
+    public LayerMask obstacleLayer;      // Layer mask for obstacles
 
     // To store the last action's state for undo functionality
     private Stack<UndoState> undoStack = new Stack<UndoState>();
+
+    private int stepCount = 0;           // Step counter
 
     void Start()
     {
@@ -30,19 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Check for undo input
-        if (Input.GetKeyDown(KeyCode.U) || (Gamepad.current != null && Gamepad.current.buttonWest.wasPressedThisFrame))
-        {
-            UndoMove();
-            return;  // Prevent further execution in Update
-        }
-
-        // If the level is completed, do not allow movement
-        if (levelLoader != null && levelLoader.IsLevelCompleted())
-        {
-            return;  // If the level is completed, stop further execution in Update
-        }
-
         // Only allow movement if the player is not already moving
         if (!isMoving)
         {
@@ -68,6 +57,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 StartCoroutine(MovePlayer(moveDirection));
             }
+
+            // Check for undo command (e.g., pressing Z key)
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                UndoMove();
+            }
         }
     }
 
@@ -76,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // Save the current state for undo functionality
         SaveCurrentState();
-
         isMoving = true;  // Prevent further movement during this process
         targetPosition = rb.position + direction * moveDistance;  // Set target position
 
@@ -85,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsPathClear(targetPosition) && (hitCollider == null || hitCollider.CompareTag("Goal")))
         {
             rb.MovePosition(targetPosition);  // Move to the target position
+            IncrementStepCount();  // Increment step count when player moves
         }
         else if (hitCollider != null && hitCollider.CompareTag("Box"))
         {
@@ -94,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 box.MoveBox(boxTargetPosition);  // Move the box
                 rb.MovePosition(targetPosition);  // Move the player to the target position
+                IncrementStepCount();  // Increment step count when player moves
             }
         }
 
@@ -144,6 +140,18 @@ public class PlayerMovement : MonoBehaviour
         Collider2D hitCollider = Physics2D.OverlapCircle(targetPosition, 0.1f, obstacleLayer);
         return hitCollider == null || (!hitCollider.CompareTag("Wall") && !hitCollider.CompareTag("Box"));
     }
+
+    // Increment the step count
+   private void IncrementStepCount()
+{
+    stepCount++;
+    levelLoader?.UpdateStepCount(stepCount); // Update step count in LevelLoader
+    LevelTimer levelTimer = GetComponent<LevelTimer>();
+    if (levelTimer != null)
+    {
+        levelTimer.IncrementStepCount(); // Call to increment step count in LevelTimer
+    }
+}
 
     // Struct to hold the state for undo functionality
     private struct UndoState
