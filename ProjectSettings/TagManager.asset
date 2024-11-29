@@ -7,6 +7,7 @@ TagManager:
   - Box
   - Wall
   - Goal
+  - Button
   layers:
   - Default
   - TransparentFX
@@ -47,14 +48,14 @@ TagManager:
   - name: Wall
     uniqueID: 1473719027
     locked: 0
-  - name: Player
-    uniqueID: 4242302787
-    locked: 0
   - name: Goal
     uniqueID: 770892521
     locked: 0
   - name: Box
     uniqueID: 2783587605
+    locked: 0
+  - name: Player
+    uniqueID: 4242302787
     locked: 0
   m_RenderingLayers:
   - Default

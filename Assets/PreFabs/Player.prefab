@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9111161117643366978}
   - component: {fileID: 9031486881230651866}
+  - component: {fileID: 5938923607102628449}
   - component: {fileID: 4726915878184805233}
   - component: {fileID: 820840934433986642}
-  - component: {fileID: 8304047630420235771}
   - component: {fileID: 1890868168881642386}
   m_Layer: 0
   m_Name: Player
@@ -91,6 +91,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5938923607102628449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200509489875526404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b811b72d3efcd4c92c204e682aff5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepCounterText: {fileID: 0}
+  levelText: {fileID: 0}
 --- !u!114 &4726915878184805233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,22 +168,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.98, y: 0.98}
   m_EdgeRadius: 0
---- !u!114 &8304047630420235771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7200509489875526404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f583eb0c4f00d124db7297101e10ee0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDistance: 1
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 192
 --- !u!50 &1890868168881642386
 Rigidbody2D:
   serializedVersion: 5

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2619832798302869146}
   - component: {fileID: 5132876943473217106}
   - component: {fileID: 8286624185549274742}
-  - component: {fileID: 3022055540016055545}
   m_Layer: 6
   m_Name: Box
   m_TagString: Box
@@ -78,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1511379691
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -6276034278838449431, guid: 4d6d9cb71437cd54b8cdfb754efac0ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,7 +102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f583eb0c4f00d124db7297101e10ee0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDistance: 1
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 192
@@ -180,25 +178,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &3022055540016055545
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7600275849415821520}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5f3883ef672735e4dbd14ac4e6f9c4e7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

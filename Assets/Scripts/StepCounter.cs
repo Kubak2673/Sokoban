@@ -1,28 +1,70 @@
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem; // Required for the new Input System
 
 public class StepCounter : MonoBehaviour
 {
     public Text stepCounterText;
-    public Text highScoreText;
-    private string levelName;
+    public Text levelText;
     private int stepCount = 0;
-    private int highScore = int.MaxValue;
-    private string filePath;
+    public Button nextLevelButton;
+    public Button previousLevelButton;
+    public Button restartButton;
 
     private void Start()
     {
-        levelName = SceneManager.GetActiveScene().name;
-        filePath = Path.Combine(Application.persistentDataPath, $"{levelName}_highscore.json");
-
-        Debug.Log("Persistent Data Path: " + Application.persistentDataPath);
-        Debug.Log("Current Level: " + levelName);
-
-        LoadHighScore();
         UpdateStepCounter();
-        UpdateHighScoreDisplay();
+        UpdateLevelText();
+
+        // Add listeners for button clicks
+        nextLevelButton.onClick.AddListener(NextLevel);
+        previousLevelButton.onClick.AddListener(PreviousLevel);
+        restartButton.onClick.AddListener(RestartLevel);
+    }
+
+    private void Update()
+    {
+        // Check for Gamepad inputs
+        if (Gamepad.current != null)
+        {
+            // Right Bumper (RB) for "Next Level"
+            if (Gamepad.current.rightShoulder.wasPressedThisFrame)
+            {
+                NextLevel();
+                return;
+            }
+
+            // Left Bumper (LB) for "Previous Level"
+            if (Gamepad.current.leftShoulder.wasPressedThisFrame)
+            {
+                PreviousLevel();
+                return;
+            }
+
+            // Y Button for "Restart Level"
+            if (Gamepad.current.yButton.wasPressedThisFrame)
+            {
+                RestartLevel();
+                return;
+            }
+        }
+
+        // Check for Keyboard inputs
+        if (Input.GetKeyDown(KeyCode.E)) // E key for "Next Level"
+        {
+            NextLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q)) // Q key for "Previous Level"
+        {
+            PreviousLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R)) // R key for "Restart Level"
+        {
+            RestartLevel();
+        }
     }
 
     public void IncrementStepCounter()
@@ -31,68 +73,50 @@ public class StepCounter : MonoBehaviour
         UpdateStepCounter();
     }
 
-    public void UndoMove()
-    {
-        Debug.Log("Undo move - Step count unchanged.");
-    }
-
-    public void CheckAndSaveHighScore()
-    {
-        if (stepCount < highScore)
-        {
-            highScore = stepCount;
-            SaveHighScore();
-            UpdateHighScoreDisplay();
-        }
-    }
-
     private void UpdateStepCounter()
     {
         if (stepCounterText != null)
-            stepCounterText.text = $"Steps: {stepCount}";
+            stepCounterText.text = $"Kroki: {stepCount}";
     }
 
-    private void UpdateHighScoreDisplay()
+    private void UpdateLevelText()
     {
-        if (highScoreText != null)
-            highScoreText.text = $"Best: {highScore} steps";
-    }
-
-    private void LoadHighScore()
-    {
-        if (File.Exists(filePath))
+        if (levelText != null)
         {
-            string json = File.ReadAllText(filePath);
-            HighScoreData data = JsonUtility.FromJson<HighScoreData>(json);
-            highScore = data.highScore;
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            levelText.text = $"Poziom: {sceneIndex}";
+        }
+    }
 
-            Debug.Log("High Score Loaded: " + highScore);
+    private void NextLevel()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
         }
         else
         {
-            Debug.Log("No high score file found. Starting with default high score.");
-            highScore = int.MaxValue;
+            Debug.Log("No more levels available");
         }
     }
 
-    private void SaveHighScore()
+    private void PreviousLevel()
     {
-        HighScoreData data = new HighScoreData { highScore = highScore };
-        string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(filePath, json);
-        Debug.Log($"High score saved for {levelName}: {highScore} steps");
+        int previousSceneIndex = SceneManager.GetActiveScene().buildIndex - 1;
+        if (previousSceneIndex >= 0)
+        {
+            SceneManager.LoadScene(previousSceneIndex);
+        }
+        else
+        {
+            Debug.Log("No previous levels available");
+        }
     }
 
-private void OnApplicationQuit()
-{
-    // No need to save high score on application quit anymore
-    // This method is now redundant
-}
-
-
-    [System.Serializable]
-    private class HighScoreData
+    private void RestartLevel()
     {
-        public int highScore;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }
