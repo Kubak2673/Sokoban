@@ -8,19 +8,27 @@ public class StepCounter : MonoBehaviour
     public Text stepCounterText;
     public Text levelText;
     private int stepCount = 0;
-    public Button nextLevelButton;
-    public Button previousLevelButton;
-    public Button restartButton;
+ private LevelGenerator levelGenerator; 
+    public GameObject player; // Reference to the player object
+    private Vector3 lastPlayerPosition;
 
     private void Start()
     {
+        // Set initial values
         UpdateStepCounter();
         UpdateLevelText();
+        levelGenerator = FindObjectOfType<LevelGenerator>();
+        // Find the player object if not set
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
 
-        // Add listeners for button clicks
-        nextLevelButton.onClick.AddListener(NextLevel);
-        previousLevelButton.onClick.AddListener(PreviousLevel);
-        restartButton.onClick.AddListener(RestartLevel);
+        // Store the player's initial position
+        if (player != null)
+        {
+            lastPlayerPosition = player.transform.position;
+        }
     }
 
     private void Update()
@@ -65,6 +73,17 @@ public class StepCounter : MonoBehaviour
         {
             RestartLevel();
         }
+
+        // Count steps based on player movement
+        if (player != null)
+        {
+            // If the player has moved, increment the step counter
+            if (player.transform.position != lastPlayerPosition)
+            {
+                IncrementStepCounter();
+                lastPlayerPosition = player.transform.position;
+            }
+        }
     }
 
     public void IncrementStepCounter()
@@ -90,33 +109,16 @@ public class StepCounter : MonoBehaviour
 
     private void NextLevel()
     {
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadScene(nextSceneIndex);
-        }
-        else
-        {
-            Debug.Log("No more levels available");
-        }
+        levelGenerator.NextLevel();
     }
 
     private void PreviousLevel()
     {
-        int previousSceneIndex = SceneManager.GetActiveScene().buildIndex - 1;
-        if (previousSceneIndex >= 0)
-        {
-            SceneManager.LoadScene(previousSceneIndex);
-        }
-        else
-        {
-            Debug.Log("No previous levels available");
-        }
+        levelGenerator.PreviousLevel();
     }
 
     private void RestartLevel()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        levelGenerator.RestartLevel();
     }
 }

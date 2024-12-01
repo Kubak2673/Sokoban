@@ -105,6 +105,8 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 192
+  defaultSprite: {fileID: -6276034278838449431, guid: 4d6d9cb71437cd54b8cdfb754efac0ff, type: 3}
+  onGoalSprite: {fileID: -8676355897143185811, guid: 30d2e8d4cbfdbe04c92807c96ac1d1ad, type: 3}
 --- !u!61 &5132876943473217106
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,7 +145,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0039216, y: 1.0039216}
+    oldSize: {x: 0.9846154, y: 0.9846154}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
