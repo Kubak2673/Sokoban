@@ -1,11 +1,11 @@
 
-
+1
     XXXXX             
     X   X             
     X*  X             
   XXX  *XXX           
   X  *  * X           
-XXX X XXX X     XXXXXX
+XXX X XXX X  f  XXXXXX
 X   X XXX XXXXXXX  ..X
 X *  *             ..X
 XXXXX XXXX X@XXXX  ..X
@@ -13,40 +13,40 @@ XXXXX XXXX X@XXXX  ..X
     XXXXXXXX          
 
 ---
-
+2
 XXXXXXXXXXXX  
 X..  X     XXX
 X..  X *  *  X
 X..  X*XXXX  X
 X..    @ XX  X
-X..  X X  * XX
+X..  X f  * XX
 XXXXXX XX* * X
   X *  * * * X
   X    X     X
   XXXXXXXXXXXX
 
 ---
-
+3
         XXXXXXXX 
         X     @X 
         X *X* XX 
         X *  *X  
         XX* * X  
-XXXXXXXXX * X XXX
+XXXXXXXXf * X XXX
 X....  XX *  *  X
 XX...    *  *   X
 X....  XXXXXXXXXX
 XXXXXXXX         
 
 ---
-
+4
               XXXXXXXX
               X  ....X
    XXXXXXXXXXXX  ....X
    X    X  * *   ....X
    X ***X*  * X  ....X
    X  *     * X  ....X
-   X ** X* * *XXXXXXXX
+   X ** f* * *XXXXXXXX
 XXXX  * X     X       
 X   X XXXXXXXXX       
 X    *  XX            
@@ -55,13 +55,13 @@ X   X   XX
 XXXXXXXXX             
 
 ---
-
+5
         XXXXX    
         X   XXXXX
         X X*XX  X
         X     * X
 XXXXXXXXX XXX   X
-X....  XX *  *XXX
+X....  X f*  *XXX
 X....    * ** XX 
 X....  XX*  * @X 
 XXXXXXXXX  *  XX 
@@ -71,21 +71,21 @@ XXXXXXXXX  *  XX
           XXXXXX 
 
 ---
-
+6
 XXXXXX  XXX 
 X..  X XX@XX
 X..  XXX   X
 X..     ** X
 X..  X X * X
-X..XXX X * X
-XXXX * X*  X
+X..XXXfX * X
+XXXX *  *  X
    X  *X * X
    X *  *  X
    X  XX   X
    XXXXXXXXX
 
 ---
-
+7
        XXXXX 
  XXXXXXX   XX
 XX X @XX ** X
@@ -93,22 +93,22 @@ X    *      X
 X  *  XXX   X
 XXX XXXXX*XXX
 X *  XXX ..X 
-X * * * ...X 
+X * *f* ...X 
 X    XXX...X 
 X ** X X...X 
 X  XXX XXXXX 
 XXXX         
 
 ---
-
+8
   XXXX          
   X  XXXXXXXXXXX
   X    *   * * X
   X *X * X  *  X
   X  * *  X    X
-XXX *X X  XXXX X
+XXX *X    XXXX X
 X@X* * *  XX   X
-X    * X*X   X X
+X    *fX*X   X X
 XX  *    * * * X
  XXXX  XXXXXXXXX
   XXX  XXX      
@@ -120,7 +120,7 @@ XX  *    * * * X
   XXXXXXXX      
 
 ---
-
+9
           XXXXXXX
           X  ...X
       XXXXX  ...X
@@ -129,7 +129,7 @@ XX  *    * * * X
       XX XX  ...X
      XXX XXXXXXXX
      X *** XX    
- XXXXX  * * XXXXX
+ XXXXX f* * XXXXX
 XX   X* *   X   X
 X@ *  *    *  * X
 XXXXXX ** * XXXXX
@@ -141,7 +141,7 @@ XXXXXX ** * XXXXX
         XXXX     
 
 ---
-
+10
               XXXX   
          XXXXXX  X   
          X       X   
@@ -152,7 +152,7 @@ X **   ** *   X....XX
 X  ***X    *  X.....X
 X *   X ** ** X.....X
 XXX   X  *    X.....X
-  X   X * * * X.....X
+  X   Xf* * * X.....X
   X XXXXXXX XXX.....X
   X   X  * *  X.....X
   XXX X ** * *XXXXXXX
@@ -164,7 +164,7 @@ XXX   X  *    X.....X
     XXXXXXXXXXXXX    
 
 ---
-
+11
           XXXX     
      XXXX X  X     
    XXX  XXX* X     
@@ -172,7 +172,7 @@ XXX   X  *    X.....X
  XX  * **XX XX     
  X  X*XX     X     
  X X * ** X XXX    
- X   * X  X * XXXXX
+ X   * Xf X * XXXXX
 XXXX    X  ** X   X
 XXXX XX *         X
 X.    XXX  XXXXXXXX
@@ -182,7 +182,7 @@ X.....X
 XXXXXXX            
 
 ---
-
+12
   XXXXXXXXX  
   X&.&X&.&X  
   X.&.&.&.X  
@@ -191,7 +191,7 @@ XXXXXXX
   X&.&.&.&X  
   XXX   XXX  
     X   X    
-XXXXXX XXXXXX
+XXXXXXfXXXXXX
 X           X
 X * * * * * X
 XX * * * * XX
@@ -201,13 +201,13 @@ XX * * * * XX
  XXXX   XXXX 
 
 ---
-
+13
     XXXXXXXXX       
   XXX   XX  XXXXX   
 XXX      X  X   XXXX
 X  ** X* X  X  ... X
 X X  *X@*XX X X.X. X
-X  XX X*  X    ... X
+X  XX X* fX    ... X
 X *X    * X X X.X. X
 X    XX  XX* * ... X
 X * XX   X  X*X.X. X
@@ -217,14 +217,14 @@ XX **  *   *  *... X
  XXXXX              
 
 ---
-
+14
 XXXXXXXXXXXXXXXX 
 X              X 
 X X XXXXXX     X 
 X X  * * * *X  X 
 X X   *@*   XX XX
 X X X* * *XXX...X
-X X   * *  XX...X
+X X   * *f XX...X
 X XXX*** * XX...X
 X     X XX XX...X
 XXXXX   XX XX...X
@@ -233,7 +233,7 @@ XXXXX   XX XX...X
         XXXXXXX  
 
 ---
-
+15
        XXXX      
     XXXX  X      
    XX  X  X      
@@ -241,7 +241,7 @@ XXXXX   XX XX...X
  XXX X*   XXXX   
  X  *  XX*   X   
  X  X @ * X *X   
- X  X      * XXXX
+ X  X f    * XXXX
  XX XXXX*XX     X
  X *X.....X X   X
  X  *...&. *X XXX
@@ -253,6 +253,7 @@ XXXXXX   X
      XXXXX       
 
 ---
+16
 XXXXX         
 X   XX        
 X    X  XXXX  
@@ -260,7 +261,7 @@ X *  XXXX  X
 X  ** *   *X  
 XXX@ X*    XX 
  X  XX  * * XX
- X *  XX XX .X
+ X * fXX XX .X
  X  X*XX*  X.X
  XXX   *..XX.X
   X    X.&...X
@@ -270,7 +271,7 @@ XXX@ X*    XX
   XXXX        
 
 ---
-
+17
        XXXXXXX    
  XXXXXXX     X    
  X     X *@* X    
@@ -279,7 +280,7 @@ XXX@ X*    XX
  X   *......XX X X
  X XXX......     X
 XX   XXXX XXX X*XX
-X  X*   X  *  X X 
+X  X*   Xf *  X X 
 X  * ***  X *XX X 
 X   * * XXX** X X 
 XXXXX     *   X X 
@@ -289,13 +290,13 @@ XXXXX     *   X X
              XXXX 
 
 ---
-
+18
       XXXXXXXXXXXX    
       X  .  XX   X    
       X X.     @ X    
  XXXXXX XX...X XXXX   
 XX  XX...XXXX     XXXX
-X * XX...    * X  *  X
+X * XX... f  * X  *  X
 X     .. XX X XX XX  X
 XXXX*XXX*X *  X   X XX
  XXX  X    XX* ** X X 
@@ -304,7 +305,7 @@ XXXX*XXX*X *  X   X XX
  XXXXXXXXXXXXXXXXX  X 
                  XXXX 
 ---
-
+19
         XXXXXX              
         X   @XXXX           
       XXXXX *   X           
@@ -315,7 +316,7 @@ XXXX*XXX*X *  X   X XX
       X  * * XXX X X        
       X X   *  X X X        
       X X  X*X   X X        
-     XX XXXX   X X X        
+     XX XXXXf  X X X        
      X  *  XXXXX X X XXXX   
     XX    *     *  XXX  XXXX
 XXXXX  XXX * *X * X   .....X
@@ -327,7 +328,7 @@ XX    XX              X....X
   XXXX                 XXXX 
 
 ---
-
+20
        XXXXXXXXXXXX 
        X..........X 
      XXX.X.X.X.X..X 
@@ -338,7 +339,7 @@ XX    XX              X....X
 XX    * X    X * XX 
 X  X*X XXX XXX*   XX
 X *  * *   X * * * X
-X  X * XX       X* X
+X  X * XXf      X* X
 X   *XXXX*XXXX*XX  X
 XXXX  XX   X    X  X
    X* XX   X X **  X
@@ -350,7 +351,7 @@ XXXX  XX   X    X  X
      XXXXXXXXXXXX   
 
 ---
-
+21
    XXXXXXXXXX   
    X..  X   X   
    X..      X   
@@ -358,7 +359,7 @@ XXXX  XX   X    X  X
   XXXXXXX  X  XX
   X            X
   X  X  XX  X  X
-XXXX XX  XXXX XX
+XXXX XXf XXXX XX
 X  *  XXXXX X  X
 X X *  *  X *  X
 X @*  *   X   XX
@@ -367,7 +368,7 @@ XXXX XX XXXXXXX
    XXXXXX       
 
 ---
-
+22
             XXXX      
  XXXXXXXXXXXX  XXXXX  
  X    X  X  *  X   XX 
@@ -377,7 +378,7 @@ XXX   XXXXXXXXXXXX XX
 X  * *X  X......X *X  
 X X   X  X......XX X  
 X  XX XX X .....X  X  
-X X      *...... * X  
+X X     f*...... * X  
 X X * XX X......X  X  
 X  * *X  X......X *X  
 X *   X  XX*XXXXX  X  
@@ -390,6 +391,7 @@ XX X     * * * *   XXX
        XXXXX          
 
 ---
+23
        XXXXXXX           
        X  X  XXXX        
        X *X* X  XX       
@@ -397,7 +399,7 @@ XXXXXXXX  X  X   XXXXXXXX
 X....  X *X* X  *X  X   X
 X....X X     X*  X      X
 X..X.    *X  X *    X*  X
-X... @XX  X* X*  X  X   X
+X... @XX  X*fX*  X  X   X
 X.... XX *X     *XXXXXXXX
 XXXXXXXX  X**X*  X       
        X *X  X  *X       
@@ -406,7 +408,7 @@ XXXXXXXX  X**X*  X
           XXXX           
 
 ---
-
+24
    XXXXXXXXXX        
    X........XXXX     
    X.X.X....X  X     
@@ -416,7 +418,7 @@ XXXXXXXX  X**X*  X
  X     *   * *  * X  
  X  X    X  * *X  X  
  XX XXXXX   X  X  X  
- X *     X   XXXX X  
+ X *     X  fXXXX X  
 XX  *X   X XX  X  X  
 X    XX*XXX    X  XX 
 X *    * X  X  X   X 
@@ -428,7 +430,7 @@ XXXXX    X XX X XX XX
        XXXXXXXXXX    
 
 ---
-
+25
                XXXX    
           XXXXXX  XXXXX
     XXXXXXX       X   X
@@ -438,7 +440,7 @@ XXXXX    X XX X XX XX
     XX*XXXX* * * XX.X.X
     X     X    XXXX.XXX
     X *   XXXXXX  X.X.X
-XXXXXX***XX      @X.X.X
+XXXXXX***XX f    @X.X.X
 X      X    X*X*XXX. .X
 X XXXX X*****    X ...X
 X X    *     X   X ...X
@@ -448,7 +450,7 @@ X        X    X  X
 XXXXXXXXXX    XXXX     
 
 ---
-
+26
 XXXXXXXXX      
 X       X      
 X       XXXX   
@@ -456,7 +458,7 @@ XX XXXX X  X
 XX X@XX    X   
 X *** *  **X   
 X  X XX *  X   
-X  X XX  * XXXX
+X  X XXf * XXXX
 XXXX  *** *X  X
  X   XX   ....X
  X X   X X.. .X
@@ -466,13 +468,13 @@ XXXX  *** *X  X
       XXXXX    
 
 ---
-
+27
  XXXXXXXXXXXXXXXXX     
  X...   X    X   XXX   
 XX.....  *XX X X * X   
 X......X  *  X  *  X   
 X......X  X  X X X XX  
-XXXXXXXXX *  * X X  XXX
+XXXXXXXXXf*  * X X  XXX
   X     X*XX* XX XX   X
  XX   *    X *  *   X X
  X  XX XXX X  XXXXX*X X
@@ -482,6 +484,7 @@ XXXXXXXXX *  * X X  XXX
        XXXXXX          
 
 ---
+28
      XXXXXXX   
      X@ X  X   
      X *   X   
@@ -490,7 +493,7 @@ XXXXXXXXX *  * X X  XXX
  X       X  XX 
  X * *XXXX * X 
  X ** X  X  *X 
- X*  *   X*  X 
+ X*  * f X*  X 
 XX  **X   ** XX
 X **  X  X  * X
 X     XXXX *  X
@@ -501,13 +504,13 @@ XXX .X....XXXXX
   XXXXXXXXXXX  
 
 ---
-
+29
                 XXXXX   
        XXXXXX XXX   XXXX
    XXXXX    XXX * *  * X
 XXXX  XX X* *    * X   X
 X....   ** * *  *   X*XX
-X.. X XX X   XXX*XX X  X
+X.. X XX X  fXXX*XX X  X
 X....    X XXX    X    X
 X....    X XX  *  XXX* X
 X..XXXXXX  *  X  XXXX XX
@@ -515,7 +518,7 @@ XXXX    X   XXX    @  X
         XXXXXXXXXXXXXXX 
 
 ---
-
+30
  XXXXX        
  X   XXXXXXX  
  X * XXX   X  
@@ -525,7 +528,7 @@ XXX X  X XXX
 X   X  X@XX   
 X **    * X   
 X   X X * XXXX
-XXXXX X   X  X
+XXXXX Xf  X  X
  X   *XXXX   X
  X  *     *  X
  XX   XXXXX XX
@@ -536,568 +539,3 @@ X.. ..X *  * X
 X.....*   X  X
 XX  XXXXXXXXXX
  XXXX         
-
----
-
- XXXXXXX       
- X  X  XXXXX   
-XX  X  X...XXX 
-X  *X  X...  X 
-X * X** ...  X 
-X  *X  X... .X 
-X   X *XXXXXXXX
-XX*       * * X
-XX  X  ** X   X
- XXXXXX  XX**@X
-      X      XX
-      XXXXXXXX 
-
----
-
-  XXXX            
-  X  XXXXXXXXX    
- XX  XX @X   X    
- X  *X * *   XXXX 
- X*  *  X * *X  XX
-XX  *XX X* *     X
-X  X  X X   ***  X
-X *    *  *XX XXXX
-X * * X*X  X  X   
-XX  XXX  XXX* X   
- X  X....     X   
- XXXX......XXXX   
-   X....XXXX      
-   X...XX         
-   X...X          
-   XXXXX          
-
----
-
-      XXXX   
-  XXXXX  X   
- XX     *X   
-XX *  XX XXX 
-X@* * X *  X 
-XXXX XX   *X 
- X....X* * X 
- X....X   *X 
- X....  ** XX
- X... X *   X
- XXXXXX* *  X
-      X   XXX
-      X* XXX 
-      X  X   
-      XXXX   
-
----
-
-XXXXXXXXXXXX
-XX     XX  X
-XX   *   * X
-XXXX XX ** X
-X   * X    X
-X *** X XXXX
-X   X X * XX
-X  X  X  * X
-X *X *X    X
-X   ..X XXXX
-XXXX.. * X@X
-X.....X *X X
-XX....X  * X
-XXX..XX    X
-XXXXXXXXXXXX
-
----
-
-XXXXXXXXXXXX  XXXXXX
-X   X    X@XXXX....X
-X   **X       .....X
-X   X XXX   XX ....X
-XX XX XXX  X   ....X
- X * *     X XX XXXX
- X  * *XX  X       X
-XXXX X  XXXX XX XX X
-X  X X*   XX XX    X
-X *  *  X XX XXXXXXX
-X X * *    X X      
-X  * XX XX X X      
-X **     **  X      
-XX XX XXX *  X      
- X    X X    X      
- XXXXXX XXXXXX      
-
----
-
-     XXXX         
-   XXX  XX        
-XXXX  *  X        
-X   * *  XXXX     
-X *   X *   X XXXX
-X  X  X   * X X..X
-XX*X* XXXX*XXXX..X
- X   XXXXX XX ...X
- X*X XX@XX XX  ..X
- X X    *     ...X
- X   XXXX XXX  ..X
- XXX XX X  XX ...X
-  XX* XXXX* XXX..X
-  X   XX    X X..X
- XX **XX  * X XXXX
- X     **** X     
- X * XXX    X     
- X   X XXXXXX     
- XXXXX            
-
----
-
-XXXXXXXXXXX          
-X......   XXXXXXXXX  
-X......   X  XX   X  
-X..XXX *    *     X  
-X... * * X  XXX   X  
-X...X*XXXXX    X  X  
-XXX    X   X*  X *XXX
-  X  ** * *  *XX  * X
-  X  *   X*X  XX    X
-  XXX XX X  * XXXXXXX
-   X  * * XX XX      
-   X    *  *  X      
-   XX   X X   X      
-    XXXXX@XXXXX      
-        XXX          
-
----
-
- XXXXXXXXX    
- X....   XX   
- X.X.X  * XX  
-XX....X X @XX 
-X ....X  X  XX
-X     X* XX* X
-XX XXX  *    X
- X*  * * *X  X
- X X  * * XX X
- X  XXX  XX  X
- X    XX XX XX
- X  * X  *  X 
- XXX* *   XXX 
-   X  XXXXX   
-   XXXX       
-
----
-
-              XXX      
-             XX.XXX    
-             X....X    
- XXXXXXXXXXXXX....X    
-XX   XX     XX....XXXXX
-X  **XX  * @XX....    X
-X      ** *X  ....X   X
-X  * XX ** X X....X  XX
-X  * XX *  X XX XXX  X 
-XX XXXXX XXX         X 
-XX   *  * XXXXX XXX  X 
-X *XXX  X XXXXX X XXXX 
-X   *   X       X      
-X  * X* * *XXX  X      
-X ***X *   X XXXX      
-X    X  ** X           
-XXXXXX   XXX           
-     XXXXX             
----
-
-      XXXX 
-XXXXXXX @X 
-X     *  X 
-X   *XX *X 
-XX*X...X X 
- X *...  X 
- X X. .X XX
- X   X X* X
- X*  *    X
- X  XXXXXXX
- XXXX      
-
----
-
-           XXXXX    
-          XX   XX   
-         XX     X   
-        XX  **  X   
-       XX **  * X   
-       X *    * X   
-XXXX   X   ** XXXXX 
-X  XXXXXXXX XX    X 
-X..           ***@X 
-X.X XXXXXXX XX   XX 
-X.X XXXXXXX. X* *XXX
-X........... X   * X
-XXXXXXXXXXXXXX  *  X
-             XX  XXX
-              XXXX  
-
----
-
- XXXXXXXX    
- X@XX   XXXX 
- X *   *   X 
- X  * * ***X 
- X **X X   X 
-XX*    *   X 
-X  *  *****XX
-X *XXXX X   X
-X  *....X   X
-X XX....X** X
-X XX....   XX
-X   ....X  X 
-XX X....X**X 
- X X....X  X 
- X         X 
- XXXX XX*XXX 
-    X    X   
-    XXXXXX   
----
-
-    XXXXXXXXXXXX 
-    X          XX
-    X  X X** *  X
-    X* X*X  XX @X
-   XX XX X * X XX
-   X   * X*  X X 
-   X   X *   X X 
-   XX * *   XX X 
-   X  X  XX  * X 
-   X    XX **X X 
-XXXXXX**   X   X 
-X....X  XXXXXXXX 
-X.X... XX        
-X....   X        
-X....   X        
-XXXXXXXXX        
-
----
-
-      XXXXXX             
-   XXXXX   X             
-   X   X X XXXXX         
-   X * X  *    XXXXXX    
-  XX*  XXX XX       X    
-XXX  ** * * X  XX   XXXXX
-X       *   XXXXXX XX   X
-X  XXXXXXXX X@   X X  X X
-XX XXX      XXXX X*X X  X
- X XXX XXXX XX.. X   * XX
- X  *  *  X*XX.. X*XX  XX
- X  X X X     ..XX XX * X
- XXXX   X XX X..X    *  X
-    XXXXX    X..X X X  XX
-        XXXXXX..X   X XX 
-             X..XXXXX  X 
-             X..       X 
-             XX  XXX  XX 
-              XXXXXXXXX  
-
----
-
-        XXXXXXX    
-    XXXXX  X  XXXX 
-    X   X   *    X 
- XXXX X** XX XX  X 
-XX      X X  XX XXX
-X  XXX *X*  *  *  X
-X...    X XX  X   X
-X...X    @ X XXX XX
-X...X  XXX  *  *  X
-XXXXXXXX XX   X   X
-          XXXXXXXXX
-
----
-
-    XXXXXXXXX  XXXX   
-    X   XX  XXXX  X   
-    X   *   X  *  X   
-    X  X XX X     XXXX
-    XX *   * **X X   X
-    XXXX  X  X * *   X
-XXXXX  XXXX    XXX...X
-X   X* X  X XXXX.....X
-X      X  X X XX.....X
-XXXXXX X  X*   XXX...X
-   X   XX X *X   X...X
-  XX       *  *X XXXXX
- XX ***XX  X *   X    
- X   X  X XXX  XXX    
- X   *  X* @XXXX      
- XXXXX  X   X         
-     XXXXXXXX         
-
----
-
- XXXXX             
- X   X             
- X X XXXXXX        
- X      *@XXXXXX   
- X * XX* XXX   X   
- X XXXX *    * X   
- X XXXXX X  X* XXXX
-XX  XXXX XX*      X
-X  *X  *  X XX XX X
-X         X X...X X
-XXXXXX  XXX  ...  X
-     XXXX X X...X X
-          X XXX X X
-          X       X
-          XXXXXXXXX
-
----
-
-       XXXX     
-       X  XX    
-       X   XX   
-       X ** XX  
-     XXX*  * XX 
-  XXXX    *   X 
-XXX  X XXXXX  X 
-X    X X....* X 
-X X   * ....X X 
-X  * X X.&..X X 
-XXX  XXXX XXX X 
-  XXXX @*  XX*XX
-     XXX *     X
-       X  XX   X
-       XXXXXXXXX
-
----
-
-      XXXXXXXXXXXX 
-     XX..    X   X 
-    XX..& *    * X 
-   XX..&.X X X* XX 
-   X..&.X X X *  X 
-XXXX...X  X    X X 
-X  XX X          X 
-X @* * XXX  X X XX 
-X *   *   X X   X  
-XXX**   X X X X X  
-  X   *   X X XXXXX
-  X *X XXXXX      X
-  X*   X   X   X  X
-  X  XXX   XX     X
-  X  X      X    XX
-  XXXX      XXXXXX 
-
----
-
-     XXXXXXXXXXXXX   
-     X    XXX    X   
-     X     * *  XXXX 
-   XXXX X   * *    X 
-  XX *  X*XXXX * * X 
-XXX   X X   XXX  * X 
-X *  *  X  *  X XXXX 
-X XX*XXXX X*X  *  XXX
-X XX  XXX X X X  *  X
-X    @*   *   X * X X
-XXXXX  X  XX  X *X  X
-  X... XXXXX*  X  X X
-  X.......X ** X* X X
-  X.......X         X
-  X.......XXXXXXX  XX
-  XXXXXXXXX     XXXX 
-
----
-
-XXXXX XXXX      
-X...X X  XXXX   
-X...XXX  *  X   
-X....XX *  *XXX 
-XX....XX   *  X 
-XXX... XX * * X 
-X XX    X  *  X 
-X  XX X XXX XXXX
-X * X X*  *    X
-X  * @ *    *  X
-X   X * ** * XXX
-X  XXXXXX  XXX  
-X XX    XXXX    
-XXX             
-
----
-
- XXXX                
-XX  XXXXX            
-X       X XXXXX      
-X *XXX  XXX   X      
-X..X  *X X  X X      
-X..X      **X XXX    
-X.&X X  X* *    XXXXX
-X..X  XX     XX*X   X
-X.&*  * X XX  *     X
-X..XX  *   X   XXXXXX
-X.&XX*XX   XXXXX     
-X..  * XXXXX         
-X  X @ X             
-XXXXXXXX             
-
----
-
-   XXXXXXXXXX
-   X  XXX   X
-   X *   *  X
-   X  XXXX*XX
-   XX X  X  X
-  XX  X.&   X
-  X  XX..X  X
-  X @ X.&X XX
-  X X*X..X* X
-  X * X..X  X
-  X X X&&X  X
-  X * X..X*XX
-  X    .&X  X
- XXX  X  X  X
-XX    XXXX  X
-X  XXXXXXX*XX
-X *      *  X
-X  XX   X   X
-XXXXXXXXXXXXX
-
----
-
- XXXXXXXXXXXXXXXXXXXXX 
- X   XX  X   X   X   X 
- X *     *   *   *   XX
-XXXXX X  X   XXX XX*XXX
-X   X XX*XXXXXX   X   X
-X *   X ......X   X * X
-XX X  X ......XXXXX   X
-XX XXXXXXXXX..X   X XXX
-X          X..X *   X  
-X XX XXX XXX..XX X  XXX
-X X   X   XX..XX XXX  X
-X   @      *..X       X
-X X   X   XX  X   XX  X
-XXXXX XXXXXXXXXXXXXX XX
-X          X   X    * X
-X *  X * * *   X X    X
-X X*XX *X  XX XX    X X
-X  * ** XXXX *  * X X X
-X          X   X      X
-XXXXXXXXXXXXXXXXXXXXXXX
-
----
-
- XXXXXXXXXXXXXXXXXXXXX
-XX                   X
-X    * X      XX X   X
-X  XXXXXX XXX  X*XX XX
-XX*X   XX*X....   X X 
-X  X    * X....XX X X 
-X * X X X X....XX   X 
-X * X**   X....XX*X X 
-X X *@*XX*X....XX   X 
-X   ***   X....X    X 
-X  *X   X XXXXXX *XXX 
-XX  X XXX**  *   * X  
-XX     X *  * XX   X  
- XXXXX   X   XXXXXXX  
-     XXXXXXXXX        
-
----
-
-XXXXXXXXXX    
-X        XXXX 
-X XXXXXX X  XX
-X X * * *  * X
-X       X*   X
-XXX*  **X  XXX
-  X  XX X *XX 
-  XX*X   * @X 
-   X  * * XXX 
-   X X   *  X 
-   X XX   X X 
-  XX  XXXXX X 
-  X         X 
-  X.......XXX 
-  X.......X   
-  XXXXXXXXX   
-
----
-
-         XXXX     
- XXXXXXXXX  XX    
-XX  *      * XXXXX
-X   XX XX   XX...X
-X X** * **X*XX...X
-X X    @  X   ...X
-X  *X XXX**   ...X
-X *  **  * XX....X
-XXX*       XXXXXXX
-  X  XXXXXXX      
-  XXXX            
-
----
-
-              XXXXXX       
-          XXXXX    X       
-          X  XX X  XXXXX   
-          X   &.X..X   X   
- XXXXX XXXX *X.X...    X   
- X   XXX  XX X&....XX XX   
- X *      XX X..X..XX X    
-XXXXXX X   X X&.XXXXX X    
-X   X *X*X X X..XXXXX X    
-X *  *     X X&.    X X    
-XX XX  * XXX X  XX  X X    
- X  *  * XXX XXXXX XX X    
- XXX*XXX*XXX  XXXX XX X    
-XXXX X         XXX  X X    
-X  * X  *XXXX  XXX**X@XXXXX
-X      * X X  XXXX  X*X   X
-XXXX X  *X X              X
-   X  *  X XX  XX  XXXXXXXX
-   XX  XXX  XXXXXXXX       
-    XXXX                   
-
----
-
-         XXXX                
-         X  X                
-         X  XXXXXXXX         
-   XXXXXXX  X      X         
-   X   X X X X X   XX        
-   X *     *  XX  * X        
-  XXX *X X  X X     XXXXXXXXX
-  X  *  X  *X X ** X   X X  X
- XX X   X     XXX    * X X  X
- X  X*   X XXX  X  X **X X  X
- X    *XX *  X   XX *  X X XX
-XXXX* * X    XX  X   *    ..X
-X  X    XXX X * * XXX  XXX.&X
-X     XX  ** @  *     XX....X
-X  XX  XX   *  X*X  XX....&.X
-XX X  *  X X *XX  XX....&.XXX
-XX XX  *  X * X  X....&.XXX  
-X    * XXXX   X ....&.XXX    
-X   X  X  X  X  ..&.XXX      
-XXXXXXXX  XXXXXXXXXXX        
-
----
-
-        XXXXX             
-        X   XXXX          
-        X *    XXXX  XXXX 
-        X   X *X  XXXX  X 
-XXXXXXXXXXX X   *   X   X 
-X..     X *  XXXX X  X  X 
-X..*  X   *  X  * X * .XX 
-X.&X X * * XX  XX    X.X  
-X..X* @ X   XX    ** X.X  
-X..X * *  * * XX   XX .X  
-X.&** X XX   * X*X * X.X  
-X..X      XX   X     X.X  
-X..XXXXXXX  XXX XXXXXX.XX 
-X **                  &.XX
-X  XXXXXXXXXXXXXXXXXX  ..X
-XXXX                XXXXXX
-
----

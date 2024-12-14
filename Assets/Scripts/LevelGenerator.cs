@@ -101,7 +101,7 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-    void SetCameraToLevel(string[] level)
+  void SetCameraToLevel(string[] level)
     {
         int levelWidth = level[0].Length;
         int levelHeight = level.Length;
@@ -121,6 +121,8 @@ public class LevelGenerator : MonoBehaviour
         mainCamera.transform.position = cameraCenter;
         MoveCameraToFocalPoint(focalPoint);
     }
+
+
     void MoveCameraToFocalPoint(Vector3 focalPoint)
     {
         mainCamera.transform.position = new Vector3(focalPoint.x, focalPoint.y, mainCamera.transform.position.z);
