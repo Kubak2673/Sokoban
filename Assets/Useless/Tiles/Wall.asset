@@ -100,9 +100,6 @@ MonoBehaviour:
     m_Sprites:
     - {fileID: 8288426215254106694, guid: 7c9e02e541066b240bbe06f182dedf12, type: 3}
     - {fileID: 4113829005332862926, guid: 11a45f46cc59cf34b97d2f36cc8c090d, type: 3}
-    - {fileID: -5099292496197868168, guid: efc79a10784aced4a8658bd16910a703, type: 3}
-    - {fileID: -2966200626249415253, guid: c206da8fc6e23db42bab21ea7f1670ba, type: 3}
-    - {fileID: -1540426309290004842, guid: ec55c6a46483e444c80eb8ef71fee472, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -116,25 +113,7 @@ MonoBehaviour:
     - {x: 1, y: 0, z: 0}
     - {x: 0, y: -1, z: 0}
     - {x: -1, y: 0, z: 0}
-    m_RuleTransform: 0
-  - m_Id: 5
-    m_Sprites:
-    - {fileID: 6660783624410144326, guid: 9444ef031de194b4a8c4decb626b917c, type: 3}
-    - {fileID: 2960402581040015946, guid: f37e29cb594b6eb46a99284c1176ee4c, type: 3}
-    m_GameObject: {fileID: 0}
-    m_MinAnimationSpeed: 1
-    m_MaxAnimationSpeed: 1
-    m_PerlinScale: 0.5
-    m_Output: 1
-    m_ColliderType: 1
-    m_RandomTransform: 0
-    m_Neighbors: 01000000010000000100000002000000
-    m_NeighborPositions:
-    - {x: -1, y: 0, z: 0}
-    - {x: 0, y: 1, z: 0}
-    - {x: 1, y: 0, z: 0}
-    - {x: 0, y: -1, z: 0}
-    m_RuleTransform: 0
+    m_RuleTransform: 3
   - m_Id: 6
     m_Sprites:
     - {fileID: 8389134475083476877, guid: 56b26280c3bc8fb4386a7dcf182d3019, type: 3}
@@ -241,24 +220,7 @@ MonoBehaviour:
     - {x: 0, y: -1, z: 0}
     - {x: -1, y: 0, z: 0}
     - {x: 1, y: 0, z: 0}
-    m_RuleTransform: 0
-  - m_Id: 12
-    m_Sprites:
-    - {fileID: 3465286685962602723, guid: 1c0f5b2134144e646b7fa05784279148, type: 3}
-    m_GameObject: {fileID: 0}
-    m_MinAnimationSpeed: 1
-    m_MaxAnimationSpeed: 1
-    m_PerlinScale: 0.5
-    m_Output: 0
-    m_ColliderType: 1
-    m_RandomTransform: 0
-    m_Neighbors: 01000000010000000200000002000000
-    m_NeighborPositions:
-    - {x: -1, y: 0, z: 0}
-    - {x: 1, y: 0, z: 0}
-    - {x: 0, y: 1, z: 0}
-    - {x: 0, y: -1, z: 0}
-    m_RuleTransform: 0
+    m_RuleTransform: 1
   - m_Id: 13
     m_Sprites:
     - {fileID: -7371509505491802261, guid: 49bcba14cc47be8419a9892cbb4ae647, type: 3}

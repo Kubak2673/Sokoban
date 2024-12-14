@@ -3,10 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private int whatLevel;
-     public void OnButtonClick()
+    public int levelIndex; // The level index for this button
+
+    public void OnButtonClick()
     {
-        SceneManager.LoadScene(whatLevel); 
+        // Set the target level index
+        LevelGenerator.targetLevelIndex = levelIndex;
+
+        // Load scene 1
+        SceneManager.LoadScene(1);
     }
-    
 }

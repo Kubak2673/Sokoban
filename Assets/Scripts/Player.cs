@@ -2,30 +2,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+
 public class Player : MonoBehaviour
 {
     public float moveDistance = 1.0f;
     private Vector2 targetPosition;
     private bool isMoving = false;
     private Rigidbody2D rb;
+    private Stack<GameState> history = new Stack<GameState>();
     public LayerMask obstacleLayer;
     public Sprite upSprite;
+    private CompletionPopup completionPopup;
     private SpriteRenderer spriteRenderer;
     private Sprite defaultSprite;
-    private StepCounter stepCounter; 
-    private Stack<GameState> history = new Stack<GameState>(); 
+    private StepCounter stepCounter;
 
     void Start()
     {
+        completionPopup = FindObjectOfType<CompletionPopup>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultSprite = spriteRenderer.sprite;
         targetPosition = rb.position;
-        stepCounter = FindObjectOfType<StepCounter>(); 
-        SaveState(); 
+        stepCounter = FindObjectOfType<StepCounter>();
+        SaveState();
     }
+
     void Update()
     {
+        if (CompletionPopup.isLevelCompleted)
+        {
+            return;
+        }
         if (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame)
         {
             GoToMainMenu();
@@ -64,13 +72,19 @@ public class Player : MonoBehaviour
             }
         }
     }
+
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(0);
     }
-    public void RestartScene()
+    public void OnLevelGenerated()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene
+        ResetUndoHistory();
+    }
+
+    public void ResetUndoHistory()
+    {
+        history.Clear();
     }
     private System.Collections.IEnumerator MovePlayer(Vector2 direction)
     {
@@ -82,24 +96,7 @@ public class Player : MonoBehaviour
         {
             rb.MovePosition(targetPosition);
             stepCounter?.IncrementStepCounter();
-            if (direction == Vector2.left)
-            {
-                spriteRenderer.flipX = true;
-                spriteRenderer.sprite = defaultSprite;
-            }
-            else if (direction == Vector2.right)
-            {
-                spriteRenderer.flipX = false; 
-                spriteRenderer.sprite = defaultSprite;
-            }
-            else if (direction == Vector2.up)
-            {
-                spriteRenderer.sprite = upSprite;
-            }
-            else if (direction == Vector2.down)
-            {
-                spriteRenderer.sprite = defaultSprite; 
-            }
+            UpdatePlayerSprite(direction);
         }
         else if (hitCollider != null && hitCollider.CompareTag("Box"))
         {
@@ -110,21 +107,35 @@ public class Player : MonoBehaviour
                 box.MoveBox(boxTargetPosition);
                 rb.MovePosition(targetPosition);
                 stepCounter?.IncrementStepCounter();
-                if (direction == Vector2.left)
-                {
-                    spriteRenderer.flipX = true; 
-                    spriteRenderer.sprite = defaultSprite;
-                }
-                else if (direction == Vector2.right)
-                {
-                    spriteRenderer.flipX = false; 
-                    spriteRenderer.sprite = defaultSprite;
-                }
+                UpdatePlayerSprite(direction);
             }
         }
         yield return new WaitForFixedUpdate();
         isMoving = false;
     }
+
+    private void UpdatePlayerSprite(Vector2 direction)
+    {
+        if (direction == Vector2.left)
+        {
+            spriteRenderer.flipX = true;
+            spriteRenderer.sprite = defaultSprite;
+        }
+        else if (direction == Vector2.right)
+        {
+            spriteRenderer.flipX = false;
+            spriteRenderer.sprite = defaultSprite;
+        }
+        else if (direction == Vector2.up)
+        {
+            spriteRenderer.sprite = upSprite;
+        }
+        else if (direction == Vector2.down)
+        {
+            spriteRenderer.sprite = upSprite;
+        }
+    }
+
     private void SaveState()
     {
         List<BoxState> boxStates = new List<BoxState>();
@@ -134,6 +145,7 @@ public class Player : MonoBehaviour
         }
         history.Push(new GameState(rb.position, boxStates));
     }
+
     private void UndoMove()
     {
         if (history.Count > 1)
@@ -147,6 +159,7 @@ public class Player : MonoBehaviour
             }
         }
     }
+
     private bool IsPathClear(Vector2 targetPosition)
     {
         Collider2D hitCollider = Physics2D.OverlapCircle(targetPosition, 0.1f, obstacleLayer);

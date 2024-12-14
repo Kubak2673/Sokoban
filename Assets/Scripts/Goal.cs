@@ -1,58 +1,55 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
-    private static int boxesInGoal = 0;
-    private static int totalBoxes;
-    private LevelGenerator levelGenerator; 
+    public  int boxesInGoal = 0;
+    public  int totalBoxes = 0;
+    private CompletionPopup completionPopup;
+    private LevelGenerator levelGenerator;
     void Start()
     {
-        totalBoxes = GameObject.FindGameObjectsWithTag("Box").Length;
-        boxesInGoal = 0;
         levelGenerator = FindObjectOfType<LevelGenerator>();
+        Debug.Log($"Total Boxes: {totalBoxes}");
+        Collider2D goalCollider = GetComponent<Collider2D>();
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Box"))
         {
-            // Change the box's sprite to the "on goal" sprite
+            Debug.Log("Box entered the goal");
             SpriteRenderer boxSpriteRenderer = other.GetComponent<SpriteRenderer>();
             BoxMovement boxMovement = other.GetComponent<BoxMovement>();
-            if (boxSpriteRenderer != null && boxMovement != null)
-            {
-                boxSpriteRenderer.sprite = boxMovement.onGoalSprite;
-            }
-
+            boxSpriteRenderer.sprite = boxMovement.onGoalSprite;
             boxesInGoal++;
-            Debug.Log("Box wkroczył na goal");
             CheckAllBoxesInGoal();
         }
     }
-
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Box"))
         {
-            // Revert the box's sprite to the default sprite
+            Debug.Log("Box exited the goal");
             SpriteRenderer boxSpriteRenderer = other.GetComponent<SpriteRenderer>();
             BoxMovement boxMovement = other.GetComponent<BoxMovement>();
-            if (boxSpriteRenderer != null && boxMovement != null)
-            {
-                boxSpriteRenderer.sprite = boxMovement.defaultSprite;
-            }
-
+            boxSpriteRenderer.sprite = boxMovement.defaultSprite;
             boxesInGoal--;
-            Debug.Log("Box opuścił goal");
         }
     }
-
-    private void CheckAllBoxesInGoal()
+    public void CheckAllBoxesInGoal()
     {
+        Debug.Log($"Checking if all boxes are in the goal: {boxesInGoal}/{totalBoxes}");
         if (boxesInGoal == totalBoxes)
         {
-            levelGenerator.NextLevel();
+            Debug.Log("All boxes are in the goal!");
+            completionPopup = FindObjectOfType<CompletionPopup>();
+            completionPopup.ShowCompletionPopup();
         }
+    }
+    public void ResetGoalState(){
+    Debug.Log("Resetting goal state...");
+    totalBoxes = 0;
+    boxesInGoal = 0;
+    totalBoxes = GameObject.FindGameObjectsWithTag("Box").Length;
+
     }
 }

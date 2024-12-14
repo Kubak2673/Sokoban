@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepCounterText: {fileID: 0}
   levelText: {fileID: 0}
+  player: {fileID: 7200509489875526404}
 --- !u!114 &4726915878184805233
 MonoBehaviour:
   m_ObjectHideFlags: 0
