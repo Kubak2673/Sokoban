@@ -1,10 +1,11 @@
 using UnityEngine;
-
+using System.Collections;
 public class Goal : MonoBehaviour
 {
-    public  int boxesInGoal = 0;
-    public  int totalBoxes = 0;
+    public static int boxesInGoal = 0;
+    public static int totalBoxes = 0;
     private CompletionPopup completionPopup;
+
     private LevelGenerator levelGenerator;
     void Start()
     {
@@ -12,6 +13,7 @@ public class Goal : MonoBehaviour
         Debug.Log($"Total Boxes: {totalBoxes}");
         Collider2D goalCollider = GetComponent<Collider2D>();
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Box"))
@@ -19,7 +21,7 @@ public class Goal : MonoBehaviour
             Debug.Log("Box entered the goal");
             SpriteRenderer boxSpriteRenderer = other.GetComponent<SpriteRenderer>();
             BoxMovement boxMovement = other.GetComponent<BoxMovement>();
-            boxSpriteRenderer.sprite = boxMovement.onGoalSprite;
+            boxMovement.StartOnGoal();
             boxesInGoal++;
             CheckAllBoxesInGoal();
         }
@@ -31,7 +33,7 @@ public class Goal : MonoBehaviour
             Debug.Log("Box exited the goal");
             SpriteRenderer boxSpriteRenderer = other.GetComponent<SpriteRenderer>();
             BoxMovement boxMovement = other.GetComponent<BoxMovement>();
-            boxSpriteRenderer.sprite = boxMovement.defaultSprite;
+            boxMovement.StartLeftGoal();
             boxesInGoal--;
         }
     }
@@ -44,12 +46,9 @@ public class Goal : MonoBehaviour
             completionPopup = FindObjectOfType<CompletionPopup>();
             completionPopup.ShowCompletionPopup();
         }
-    }
-    public void ResetGoalState(){
-    Debug.Log("Resetting goal state...");
-    totalBoxes = 0;
-    boxesInGoal = 0;
-    totalBoxes = GameObject.FindGameObjectsWithTag("Box").Length;
-
+        else 
+        {
+            return;
+        }
     }
 }

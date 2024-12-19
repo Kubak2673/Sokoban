@@ -64,7 +64,7 @@ public class LevelGenerator : MonoBehaviour
         currentLevel = levelsToLoad[levelIndex];
         GenerateLevel(currentLevel);
         goal = FindObjectOfType<Goal>();
-        goal.totalBoxes = GameObject.FindGameObjectsWithTag("Box").Length - oldBoxes;
+        Goal.totalBoxes = GameObject.FindGameObjectsWithTag("Box").Length - oldBoxes;
         SetCameraToLevel(currentLevel);
         MovePlayerToStartPosition(currentLevel);
         stepCounter = FindObjectOfType<StepCounter>();
