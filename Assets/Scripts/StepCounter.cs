@@ -8,10 +8,9 @@ public class StepCounter : MonoBehaviour
     public Text stepCounterText;
     public Text levelText;
     public Text didIt;
-    private int stepCount = 0;
+    public int stepCount = 0;
     private LevelGenerator levelGenerator;
-    public GameObject player;
-    private Vector3 lastPlayerPosition;
+
 
     private void Start()
     {
@@ -24,32 +23,12 @@ public class StepCounter : MonoBehaviour
     {
         if (Gamepad.current != null)
         {
-            if (Gamepad.current.rightShoulder.wasPressedThisFrame)
-            {
-                NextLevel();
-                return;
-            }
-            if (Gamepad.current.leftShoulder.wasPressedThisFrame)
-            {
-                PreviousLevel();
-                return;
-            }
             if (Gamepad.current.yButton.wasPressedThisFrame)
             {
                 RestartLevel();
                 return;
             }
         }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            NextLevel();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            PreviousLevel();
-        }
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             RestartLevel();
@@ -82,19 +61,6 @@ public class StepCounter : MonoBehaviour
         stepCount = 0;
         UpdateStepCounter();
     }
-
-    private void NextLevel()
-    {
-        levelGenerator.NextLevel();
-        UpdateLevelText();
-    }
-
-    private void PreviousLevel()
-    {
-        levelGenerator.PreviousLevel();
-        UpdateLevelText();
-    }
-
     private void RestartLevel()
     {
         levelGenerator.RestartLevel();

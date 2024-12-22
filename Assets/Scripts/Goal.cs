@@ -45,6 +45,11 @@ public class Goal : MonoBehaviour
             Debug.Log("All boxes are in the goal!");
             completionPopup = FindObjectOfType<CompletionPopup>();
             completionPopup.ShowCompletionPopup();
+            if (LevelManager.currLevel == LevelManager.UnlockedLevels)
+            {
+                LevelManager.UnlockedLevels++;
+                PlayerPrefs.SetInt("UnlockedLevels", LevelManager.UnlockedLevels);
+            }
         }
         else 
         {

@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -11,26 +12,34 @@ public class LevelGenerator : MonoBehaviour
     public RuleTile focalPointRuleTile; // Reference to the RuleTile for the focal point (F)
     public GameObject boxPrefab; // Prefab for the boxes
     public GameObject goalPrefab; // Prefab for the goal
-    public Camera mainCamera; 
-    public static int targetLevelIndex = 0; // Domyślnie ustawiony na 0
-    private  Goal goal;
+    public Camera mainCamera;
+    public static int targetLevelIndex = 0; // Default to level 0
+    private Goal goal;
+    
     private Player player; // Reference to the Player script
-    private CompletionPopup completionPopup; 
-    private StepCounter stepCounter; 
+    private CompletionPopup completionPopup;
+    private StepCounter stepCounter;
     private string[] currentLevel;
     private int currentLevelIndex = 0;
     private string[][] levelsToLoad;
-    private string levelsFilePath = "Assets/Levels/levels.txt";
+    private string levelsFilePath;
     public Vector3 focalPoint; // Custom focal point for the camera
     private GameObject playerInstance; // Store player instance to move across levels
     int oldBoxes = 0;
+
     void Start()
     {
-        currentLevelIndex = LevelGenerator.targetLevelIndex; 
-        LoadLevelsFromFile(); 
-        goal = FindObjectOfType<Goal>(); 
-        player = FindObjectOfType<Player>(); LoadLevel(currentLevelIndex);
+        currentLevelIndex = LevelGenerator.targetLevelIndex;
+        
+        // Use StreamingAssets to load levels from a file
+        levelsFilePath = Path.Combine(Application.streamingAssetsPath, "levels.txt");
+        
+        LoadLevelsFromFile();
+        goal = FindObjectOfType<Goal>();
+        player = FindObjectOfType<Player>();
+        LoadLevel(currentLevelIndex);
     }
+
     void RemoveOldObjectsExceptPlayer()
     {
         foreach (string tag in new[] { "Box", "Goal" })
@@ -41,6 +50,7 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
+
     void LoadLevelsFromFile()
     {
         if (File.Exists(levelsFilePath))
@@ -53,11 +63,14 @@ public class LevelGenerator : MonoBehaviour
                 levelsToLoad[i] = allLevels[i].Split('\n');
             }
         }
+        else
+        {
+            Debug.LogError("Levels file not found: " + levelsFilePath);
+        }
     }
 
- void LoadLevel(int levelIndex)
+    void LoadLevel(int levelIndex)
     {
-       
         tilemap.ClearAllTiles();
         oldBoxes = GameObject.FindGameObjectsWithTag("Box").Length;
         RemoveOldObjectsExceptPlayer();
@@ -69,9 +82,8 @@ public class LevelGenerator : MonoBehaviour
         MovePlayerToStartPosition(currentLevel);
         stepCounter = FindObjectOfType<StepCounter>();
         stepCounter.ResetStepCounter();
-        stepCounter.levelText.text = $"Poziom: {currentLevelIndex+ 1}";
+        stepCounter.levelText.text = $"Poziom: {currentLevelIndex + 1}";
     }
-
 
     void GenerateLevel(string[] level)
     {
@@ -101,7 +113,8 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-  void SetCameraToLevel(string[] level)
+
+    void SetCameraToLevel(string[] level)
     {
         int levelWidth = level[0].Length;
         int levelHeight = level.Length;
@@ -122,11 +135,11 @@ public class LevelGenerator : MonoBehaviour
         MoveCameraToFocalPoint(focalPoint);
     }
 
-
     void MoveCameraToFocalPoint(Vector3 focalPoint)
     {
         mainCamera.transform.position = new Vector3(focalPoint.x, focalPoint.y, mainCamera.transform.position.z);
     }
+
     void MovePlayerToStartPosition(string[] level)
     {
         GameObject player = FindObjectOfType<Player>().gameObject;
@@ -146,23 +159,18 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-    public void NextLevel()
+
+    public IEnumerator NextLevel()
     {
         if (currentLevelIndex < levelsToLoad.Length - 1)
         {
+            yield return new WaitForSeconds(5);
             completionPopup = FindObjectOfType<CompletionPopup>();
             CompletionPopup.isLevelCompleted = false;
-            stepCounter = FindObjectOfType<StepCounter>();
-            currentLevelIndex++;
-            stepCounter.levelText.text = $"Poziom: {currentLevelIndex+1}";
-            player.ResetUndoHistory();            
-            goal = FindObjectOfType<Goal>();
-            LoadLevel(currentLevelIndex);
-            stepCounter.didIt.text = "";
-            stepCounter.didIt.color = Color.white;
-            stepCounter.levelText.color = Color.white;
+            SceneManager.LoadScene(0);
         }
     }
+
     public void PreviousLevel()
     {
         if (currentLevelIndex > 0)
@@ -171,8 +179,8 @@ public class LevelGenerator : MonoBehaviour
             CompletionPopup.isLevelCompleted = false;
             stepCounter = FindObjectOfType<StepCounter>();
             currentLevelIndex--;
-            stepCounter.levelText.text = $"Poziom: {currentLevelIndex+ 1}";
-            player.ResetUndoHistory();            
+            stepCounter.levelText.text = $"Poziom: {currentLevelIndex + 1}";
+            player.ResetUndoHistory();
             goal = FindObjectOfType<Goal>();
             LoadLevel(currentLevelIndex);
             stepCounter.didIt.text = "";
@@ -196,8 +204,9 @@ public class LevelGenerator : MonoBehaviour
         focalPoint = newFocalPoint;
         SetCameraToLevel(currentLevel);
     }
-    public int GetCurrentLevelIndex() 
-    { 
-        return currentLevelIndex; 
+
+    public int GetCurrentLevelIndex()
+    {
+        return currentLevelIndex;
     }
 }
