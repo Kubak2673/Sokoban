@@ -13,6 +13,7 @@ public class GameState
 }
 public class BoxState
 {
+    // idont care about the box state
     public Vector2 Position { get; }
     public BoxState(Vector2 position)
     {

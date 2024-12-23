@@ -1,10 +1,12 @@
 XXXXXX
 Xf@*.X
 XXXXXX
+reward: 10
 ---
 XXXXXX
 Xf@*.X
 XXXXXX
+reward: 100
 ---
 XXXXXX
 Xf@*.X

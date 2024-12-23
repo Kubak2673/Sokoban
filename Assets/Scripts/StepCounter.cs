@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class StepCounter : MonoBehaviour
 {
     public Text stepCounterText;
+    public Text minStepsText;
     public Text levelText;
     public Text didIt;
     public int stepCount = 0;
@@ -40,7 +41,31 @@ public class StepCounter : MonoBehaviour
         stepCount++;
         UpdateStepCounter();
     }
-
+    public void StepCountUpdate()
+    {
+        // Generate the key for the current level's minimum steps.
+        string key = $"minSteps{PlayerPrefs.GetInt("currentLevel")}";
+        
+        // Check if the key exists in PlayerPrefs.
+        if (PlayerPrefs.HasKey(key))
+        {
+            int storedMinSteps = PlayerPrefs.GetInt(key);
+            
+            // Update only if the current step count is smaller.
+            if (stepCount < storedMinSteps)
+            {
+                PlayerPrefs.SetInt(key, stepCount);
+                minStepsText.text = $"Rekord: {stepCount}";
+            }
+            // Do nothing if the current step count is not smaller.
+        }
+        else
+        {
+            // If no score exists, set the current step count as the minimum.
+            PlayerPrefs.SetInt(key, stepCount);
+            minStepsText.text = $"Rekord: {stepCount}";
+        }
+    }
     private void UpdateStepCounter()
     {
         if (stepCounterText != null)

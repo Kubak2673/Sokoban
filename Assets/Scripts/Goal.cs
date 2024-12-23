@@ -5,7 +5,6 @@ public class Goal : MonoBehaviour
     public static int boxesInGoal = 0;
     public static int totalBoxes = 0;
     private CompletionPopup completionPopup;
-
     private LevelGenerator levelGenerator;
     void Start()
     {

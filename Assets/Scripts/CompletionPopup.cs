@@ -12,14 +12,17 @@ public class CompletionPopup : MonoBehaviour
     {
         popupPanel.SetActive(false);
     }
-    public void ShowCompletionPopup()
+public void ShowCompletionPopup()
     {
         isLevelCompleted = true;
         stepCounter = FindObjectOfType<StepCounter>();
+        stepCounter.StepCountUpdate();
         stepCounter.didIt.text = "ukończono";
         stepCounter.didIt.color = Color.green;
         stepCounter.levelText.color = Color.green;
         levelGenerator = FindObjectOfType<LevelGenerator>();
         StartCoroutine(levelGenerator.NextLevel());
     }
+
+
 } 

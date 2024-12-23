@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class LevelManager : MonoBehaviour
 {
@@ -24,8 +25,10 @@ public class LevelManager : MonoBehaviour
         LevelGenerator.targetLevelIndex = levelNum;
         SceneManager.LoadScene(1);
     }
-    public void OnClickBack()
+    public void OnClickClearAndLevel()
     {
-        gameObject.SetActive(false);
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(0);
     }
 }

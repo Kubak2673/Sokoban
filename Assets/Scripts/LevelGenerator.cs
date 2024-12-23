@@ -69,21 +69,35 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    void LoadLevel(int levelIndex)
+void LoadLevel(int levelIndex)
+{
+    tilemap.ClearAllTiles();
+    oldBoxes = GameObject.FindGameObjectsWithTag("Box").Length;
+    RemoveOldObjectsExceptPlayer();
+    currentLevel = levelsToLoad[levelIndex];
+    PlayerPrefs.SetInt("currentLevel", currentLevelIndex);
+    GenerateLevel(currentLevel);
+    goal = FindObjectOfType<Goal>();
+    Goal.totalBoxes = GameObject.FindGameObjectsWithTag("Box").Length - oldBoxes;
+    SetCameraToLevel(currentLevel);
+    MovePlayerToStartPosition(currentLevel);
+    stepCounter = FindObjectOfType<StepCounter>();
+    stepCounter.ResetStepCounter();
+    stepCounter.levelText.text = $"Poziom: {currentLevelIndex + 1}";
+    
+    // Display min steps for the level
+    string key = $"minSteps{currentLevelIndex}";
+    if (PlayerPrefs.HasKey(key))
     {
-        tilemap.ClearAllTiles();
-        oldBoxes = GameObject.FindGameObjectsWithTag("Box").Length;
-        RemoveOldObjectsExceptPlayer();
-        currentLevel = levelsToLoad[levelIndex];
-        GenerateLevel(currentLevel);
-        goal = FindObjectOfType<Goal>();
-        Goal.totalBoxes = GameObject.FindGameObjectsWithTag("Box").Length - oldBoxes;
-        SetCameraToLevel(currentLevel);
-        MovePlayerToStartPosition(currentLevel);
-        stepCounter = FindObjectOfType<StepCounter>();
-        stepCounter.ResetStepCounter();
-        stepCounter.levelText.text = $"Poziom: {currentLevelIndex + 1}";
+        int minSteps = PlayerPrefs.GetInt(key);
+        stepCounter.minStepsText.text = $"Rekord:{minSteps}";
     }
+    else
+    {
+        stepCounter.minStepsText.text = "Rekord: --";
+    }
+}
+
 
     void GenerateLevel(string[] level)
     {
@@ -160,16 +174,40 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    public IEnumerator NextLevel()
+public IEnumerator NextLevel()
+{
+    if (currentLevelIndex < levelsToLoad.Length - 1)
     {
-        if (currentLevelIndex < levelsToLoad.Length - 1)
+        yield return new WaitForSeconds(5);
+
+        // Find necessary objects
+        completionPopup = FindObjectOfType<CompletionPopup>();
+        CompletionPopup.isLevelCompleted = false;
+        stepCounter = FindObjectOfType<StepCounter>();
+
+        // Move to the next level
+        currentLevelIndex++;
+        stepCounter.levelText.text = $"Poziom: {currentLevelIndex + 1}";
+        player.ResetUndoHistory();
+        goal = FindObjectOfType<Goal>();
+        LoadLevel(currentLevelIndex);
+
+        // Reset UI elements
+        stepCounter.didIt.text = "";
+        stepCounter.didIt.color = Color.white;
+        stepCounter.levelText.color = Color.white;
+
+        // Unlock the next level
+        if (currentLevelIndex > LevelManager.UnlockedLevels)
         {
-            yield return new WaitForSeconds(5);
-            completionPopup = FindObjectOfType<CompletionPopup>();
-            CompletionPopup.isLevelCompleted = false;
-            SceneManager.LoadScene(0);
+            LevelManager.UnlockedLevels = currentLevelIndex;
+            PlayerPrefs.SetInt("UnlockedLevels", LevelManager.UnlockedLevels);
+            PlayerPrefs.Save(); // Persist the updated value
         }
     }
+}
+
+
 
     public void PreviousLevel()
     {
