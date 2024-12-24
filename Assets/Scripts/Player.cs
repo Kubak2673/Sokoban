@@ -67,10 +67,10 @@ public class Player : MonoBehaviour
                 if (Gamepad.current.leftStick.right.wasPressedThisFrame) moveDirection = Vector2.right;
 
                  // Gamepad D-pad movement
-            if (Gamepad.current.dpad.up.isPressed) moveDirection = Vector2.up;
-            if (Gamepad.current.dpad.down.isPressed) moveDirection = Vector2.down;
-            if (Gamepad.current.dpad.left.isPressed) moveDirection = Vector2.left;
-            if (Gamepad.current.dpad.right.isPressed) moveDirection = Vector2.right;
+            if (Gamepad.current.dpad.up.wasPressedThisFrame) moveDirection = Vector2.up;
+                if (Gamepad.current.dpad.down.wasPressedThisFrame) moveDirection = Vector2.down;
+                if (Gamepad.current.dpad.left.wasPressedThisFrame) moveDirection = Vector2.left;
+                if (Gamepad.current.dpad.right.wasPressedThisFrame) moveDirection = Vector2.right;
             }
             if (moveDirection != Vector2.zero)
             {

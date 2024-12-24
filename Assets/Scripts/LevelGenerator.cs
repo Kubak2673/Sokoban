@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.IO;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using System.Collections;
+
 
 public class LevelGenerator : MonoBehaviour
 {
+    private LevelManager levelManager;
     public Tilemap tilemap; // Reference to the Tilemap
     public RuleTile wallRuleTile; // Reference to the RuleTile for walls
     public RuleTile focalPointRuleTile; // Reference to the RuleTile for the focal point (F)
@@ -15,19 +15,20 @@ public class LevelGenerator : MonoBehaviour
     public Camera mainCamera;
     public static int targetLevelIndex = 0; // Default to level 0
     private Goal goal;
-    
+    public int isCompleted = 0;
     private Player player; // Reference to the Player script
     private CompletionPopup completionPopup;
     private StepCounter stepCounter;
     private string[] currentLevel;
     private int currentLevelIndex = 0;
     private string[][] levelsToLoad;
+    public static int gems = PlayerPrefs.GetInt("gems", 0);
     private string levelsFilePath;
     public Vector3 focalPoint; // Custom focal point for the camera
     private GameObject playerInstance; // Store player instance to move across levels
     int oldBoxes = 0;
 
-    void Start()
+    private async void Start()
     {
         currentLevelIndex = LevelGenerator.targetLevelIndex;
         
@@ -178,6 +179,7 @@ public IEnumerator NextLevel()
 {
     if (currentLevelIndex < levelsToLoad.Length - 1)
     {
+        IsCompleted();
         yield return new WaitForSeconds(5);
 
         // Find necessary objects
@@ -246,5 +248,32 @@ public IEnumerator NextLevel()
     public int GetCurrentLevelIndex()
     {
         return currentLevelIndex;
+    }
+    public void IsCompleted()
+    {
+        if (PlayerPrefs.GetInt("isCompleted" + currentLevelIndex, 0) == 1)
+        {
+            return;
+        }
+        PlayerPrefs.SetInt("isCompleted", isCompleted);
+        PlayerPrefs.SetInt("currentLevel", currentLevelIndex);
+        PlayerPrefs.SetInt("isCompleted" + currentLevelIndex, 1);
+        GiveReward();
+    }
+    private void GiveReward()
+    {
+        gems++;
+        PlayerPrefs.SetInt("gems", gems);
+        PlayerPrefs.Save();
+
+        levelManager = FindFirstObjectByType<LevelManager>();
+        if (levelManager != null)
+        {
+            levelManager.GemsText.text = "Gems: " + gems.ToString();
+        }
+        else
+        {
+            Debug.LogError("LevelManager not found in the scene.");
+        }
     }
 }
